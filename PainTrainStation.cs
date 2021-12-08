@@ -57,13 +57,27 @@ namespace PainTrainStation
 
         public static void processIndividualUpdate(TGUpdate update)
         {
-            var msg = update.message;
-            if (msg.from.is_bot)
-                return;
-            if (msg.from == null)
-                return;
-            if (msg.from.id == 777000 && msg.is_automatic_forward==false)
-                msg.deleteAsync();
+            try
+            {
+                var msg = update.message;
+                if (msg.from.is_bot)
+                    return;
+                if (msg.from == null)
+                    return;
+                if (msg.from.id == 777000 && msg.is_automatic_forward == false)
+                    msg.deleteAsync();
+                if (msg.sender_chat == null)
+                    return;
+                var chat = msg.sender_chat;
+                if (chat.type != "channel")
+                    return;
+                var CID = chat.id;
+                Telegram.banSenderChatAsync(msg.chat, chat);
+            }
+            catch (Exception E)
+            {
+                Helpers.writeStack(E.ToString());
+            }
         }
     }
 }

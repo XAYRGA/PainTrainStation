@@ -299,6 +299,24 @@ namespace PainTrainStation
             return false;
         }
 
+
+        public static async Task<bool> banSenderChatAsync(TGChat chat, TGChat banChat)
+        {
+            var b = new NameValueCollection();
+            b["chat_id"] = chat.id.ToString();
+            b["sender_chat_id"] = banChat.id.ToString();
+
+            TGResponse resp = await apiGetRequestAsync("banChatSenderChat", b);
+
+            if (resp.ok == true)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+
         public static TGMessage sendMessage(TGChat chat, string message, string parse_mode)
         {
 

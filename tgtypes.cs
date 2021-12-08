@@ -121,6 +121,8 @@ namespace PainTrainStation
         public TGVideo video;
         public TGDocument document;
         public bool is_automatic_forward;
+        public TGChat sender_chat;
+
         public TGMessage replySendMessage(string text)
         {
             if (this.chat != null)
