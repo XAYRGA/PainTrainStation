@@ -120,7 +120,7 @@ namespace PainTrainStation
         public TGUser[] new_chat_members;
         public TGVideo video;
         public TGDocument document;
-
+        public bool is_automatic_forward;
         public TGMessage replySendMessage(string text)
         {
             if (this.chat != null)

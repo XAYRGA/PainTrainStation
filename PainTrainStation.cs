@@ -62,7 +62,7 @@ namespace PainTrainStation
                 return;
             if (msg.from == null)
                 return;
-            if (msg.from.id == 777000)
+            if (msg.from.id == 777000 && msg.is_automatic_forward==false)
                 msg.deleteAsync();
         }
     }
