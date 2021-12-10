@@ -62,7 +62,7 @@ namespace PainTrainStation
                 var msg = update.message;
                 if (msg.from == null)
                     return;
-                if (msg.is_automatic_forward == false)
+                if (msg.is_automatic_forward == true)
                     return;
                 if ((msg.from.id == 777000 || msg.from.id==136817688))
                     msg.deleteAsync();
