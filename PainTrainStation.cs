@@ -60,11 +60,11 @@ namespace PainTrainStation
             try
             {
                 var msg = update.message;
-                if (msg.from.is_bot)
-                    return;
                 if (msg.from == null)
                     return;
-                if (msg.from.id == 777000 && msg.is_automatic_forward == false)
+                if (msg.is_automatic_forward == false)
+                    return;
+                if ((msg.from.id == 777000 || msg.from.id==136817688))
                     msg.deleteAsync();
                 if (msg.sender_chat == null)
                     return;
